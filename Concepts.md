@@ -4,7 +4,7 @@
 - Or we can use default Generators
 
 # Generators
-- **Simple** - Removes trailing paretheses from test method name 
+- **Simple** - Removes trailing paretheses from test method name . `getSourch_null_exception`**`()`** -> `getSourch_null_exception`
 - **ReplaceUnderscores** - Replaces underscores in test method name with spaces.
 - **IndicativeSentences** - Generate sentence based on test class name and test method name.
 

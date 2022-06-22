@@ -10,7 +10,7 @@ There are some ways to check lists in junit.
 
 To choose what do we want to use, we may decide of next factors:
 - What do we want to check? Do we have personal class that implements iterable?
-- How do we want to check? All items or first fail?
+- How do we want to check? For example AssertEquals uses Equals method between objects. So AssertEquals on list will use `listA.equals(listB)`.
 - What do we want to see if fails? Example
     ```
     Assert Equals:

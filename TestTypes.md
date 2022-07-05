@@ -24,8 +24,8 @@
 - **Example:**
     ```
     List<String> s = List.of("1", "2", "3");
-        List<String> s2 = List.of("1", "2", "3");
-        assertIterableEquals(s, s2, "Arrays should be the same");
+    List<String> s2 = List.of("1", "2", "3");
+    assertIterableEquals(s, s2, "Arrays should be the same");
     ```
 
 ## AssertLinesMatch
@@ -49,14 +49,10 @@
 ## Assert Throws/DoesNotThrow
 - **Description:** Check if exception thrown or doesn't.
 - **Example:**
-    ```
-    assertThrows(MyException.class, () -> demoUtils.isGreaterThan0(-1));
-    assertDoesNotThrow(() -> demoUtils.isGreaterThan0(1));
-    ```
+    - `assertThrows(MyException.class, () -> demoUtils.isGreaterThan0(-1))`;
+    - `assertDoesNotThrow(() -> demoUtils.isGreaterThan0(1));`
 
 ## Assert TimeoutPreemptively
-- **Description:** Assert if timeout not happens during time given. 
-- **Example:** In the next example the function runs 2 seconds, so test shuold pass, if Duration was 1 second it would fail.
-    ```
-    assertTimeoutPreemptively(Duration.ofSeconds(3), () -> demoUtils.checkTimeout());
-    ```
+- **Description:** Assert if timeout not happens during time given. **Note:** test WILL NOT wait for actual duration BUT FAIL after the Duration requested.
+- **Example:** In the next example the function runs 2 seconds, so test shuold pass, if Duration was 1 second it would fail. 
+    - `assertTimeoutPreemptively(Duration.ofSeconds(3), () -> demoUtils.checkTimeout());`

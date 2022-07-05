@@ -45,3 +45,18 @@
     List<String> actual = Arrays.asList("String B", "String A");
     assertThat("List equality without order", actual, containsInAnyOrder(expected.toArray()));
     ```
+
+## Assert Throws/DoesNotThrow
+- **Description:** Check if exception thrown or doesn't.
+- **Example:**
+    ```
+    assertThrows(MyException.class, () -> demoUtils.isGreaterThan0(-1));
+    assertDoesNotThrow(() -> demoUtils.isGreaterThan0(1));
+    ```
+
+## Assert TimeoutPreemptively
+- **Description:** Assert if timeout not happens during time given. 
+- **Example:** In the next example the function runs 2 seconds, so test shuold pass, if Duration was 1 second it would fail.
+    ```
+    assertTimeoutPreemptively(Duration.ofSeconds(3), () -> demoUtils.checkTimeout());
+    ```

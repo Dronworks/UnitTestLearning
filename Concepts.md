@@ -38,3 +38,67 @@ Generators annotation can be added to a class.
     - custom order can be defined
     - default order can be configured in properties file
     - https://junit.org/junit5/docks/current/user-guide/
+
+# Code coverage + Maven Tests Run
+It is very hard to achieve 100% coverage, mostly we would like 70-80%
+## IntelliJ
+- To run right click and select run with coverage (shield icon)
+- After run press the `arrow exit box` icon to save and view as html
+- Tests can also be saved and view as html in the test result area, `arrow exit box`
+## Maven
+- By default Maven **will not find Junit5 tests!**
+    - Use Maven **Surefire** plugin for this
+- To generate HTML report, **Surefire-report** plugin is needed. Also need to add execution block
+    ```
+    <executions>
+        <execution>
+            <phase>test</phase>
+            <goals>
+                <goal>report</goal>
+            </goals>
+        </execution>
+    </executions>
+    ```
+- By default the report doesn't have any css styling, run `mvn site -DgenerateReports=false`
+- Reports are saved in **target/sire/surefire-report.html**
+- By default reports will not be generated if some of the tests fail
+    - Add configuration
+        ```
+        <configuration>
+            <testFailureIgnore>true</testFailureIgnore>
+        </configuration>
+        ```
+- By default description name will not be shown
+    - Add configuration
+        ```
+        <configuration>
+            <statelessTestsetReporter implementation="org.apache.maven.plugin.surefire.extensions.junit5.JUnit5Xml30StatelessReporter">
+                <usePhrasedTestCaseMethodName>true</usePhrasedTestCaseMethodName>
+            </tatelessTestsetReporter>
+        </configuration>
+        ```
+- To run code coverage in Maven we need to use JaCoCo that run during test phase
+    - Add plugin
+        ```
+        <plugin>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <version>0.8.6</version>
+            <executions>
+  	            <execution>
+      	            <id>jacoco-prepare</id>
+                    <goals>
+            		    <goal>prepare-agent</goal>
+                    </goals>
+                </execution>
+                <execution>
+                    <id>jacoco-report</id>
+                    <phase>test</phase>
+                    <goals>
+               	        <goal>report</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+        ```
+- Reports are saved in **target/sire/jacoco/index.html**

@@ -25,5 +25,16 @@ Generators annotation can be added to a class.
 ## Order types:
 - **MethodOrder.DisplayName**
 - **MethodOrder.MethodName** - Ignores the display name and only orders by method name.
-- **MethodOrder.Random** - remember there is an orderm but non obvious.
-- **MethodOrder.OrderAnnotation** - Sorts test methods numerically based on @Order.
+- **MethodOrder.Random** - remember there is an order by default but non obvious. So this good to test that tests have no dependency on on another. 
+- **MethodOrder.OrderAnnotation** - Sorts test methods numerically based on @Order. 
+    - Example:
+        ```
+        @Order(1)
+        public void testTrueAndFalse() { .. }
+        ```
+    - Order number CAN BE NEGATIVE!
+- **More orders are available**
+    - between classe
+    - custom order can be defined
+    - default order can be configured in properties file
+    - https://junit.org/junit5/docks/current/user-guide/

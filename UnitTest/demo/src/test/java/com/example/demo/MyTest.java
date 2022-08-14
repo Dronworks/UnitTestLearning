@@ -3,6 +3,7 @@ package com.example.demo;
 import org.junit.jupiter.api.*;
 
 import java.time.Duration;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -52,8 +53,37 @@ public class MyTest {
     }
 
     @Test
+    public void testAssertArraysEquals() {
+        String[] s = new String[]{"1", "2", "3"};
+        String[] s2 = new String[]{"1", "2", "3"};
+        assertArrayEquals(s, s2, "Arrays should be the same");
+    }
+
+    @Test
+    public void testAssertIterableEquals() {
+        List<String> s = List.of("1", "2", "3");
+        List<String> s2 = List.of("1", "2", "3");
+        assertIterableEquals(s, s2, "Arrays should be the same");
+    }
+
+    @Test
+    public void testAssertEqualsList() {
+        List<String> s = List.of("1", "2", "3");
+        List<String> s2 = List.of("1", "2", "3");
+        assertEquals(s, s2, "Arrays should be the same");
+    }
+
+    @Test
+    public void testAssertLinesList() {
+        List<String> s = List.of("1", "2", "3");
+        List<String> s2 = List.of("1", "2", "3");
+        assertLinesMatch(s, s2, "Arrays should be the same");
+    }
+
+    @Test
     @DisplayName("Test not oversleeps")
     public void testTimeout() {
         assertTimeoutPreemptively(Duration.ofSeconds(3), () -> demoUtils.checkTimeout());
     }
+
 }

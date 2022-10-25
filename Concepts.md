@@ -48,18 +48,30 @@ It is very hard to achieve 100% coverage, mostly we would like 70-80%
 ## Maven
 - By default Maven **will not find Junit5 tests!**
     - Use Maven **Surefire** plugin for this
+        ```
+        <plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-surefire-plugin</artifactId>
+			<version>3.0.0-M7</version>
+		</plugin>
+        ```
 - To generate HTML report, **Surefire-report** plugin is needed. Also need to add execution block
     ```
-    <executions>
-        <execution>
-            <phase>test</phase>
-            <goals>
-                <goal>report</goal>
-            </goals>
-        </execution>
-    </executions>
+    <plugin>
+	    <groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-surefire-report-plugin</artifactId>
+		<version>3.0.0-M7</version>
+		<executions>
+			<execution>
+				<phase>test</phase>
+				<goals>
+					<goal>report</goal>
+				</goals>
+			</execution>
+		</executions>
+	</plugin>
     ```
-- By default the report doesn't have any css styling, run `mvn site -DgenerateReports=false`
+- By default the report doesn't have any css styling, run `mvn site -DgenerateReports=false` where DgenerateReports - means Don't overwrite existing reports.
 - Reports are saved in **target/sire/surefire-report.html**
 - By default reports will not be generated if some of the tests fail
     - Add configuration

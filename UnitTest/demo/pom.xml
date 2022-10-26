@@ -55,10 +55,15 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>3.0.0-M7</version>
-				
-				<!-- show failed tests in the reports -->
+
 				<configuration>
+					<!-- show failed tests in the reports -->
 					<testFailureIgnore>true</testFailureIgnore>
+
+					<!-- Show tests method names in unit test reports -->
+					<statelessTestsetReporter implementation="org.apache.maven.plugin.surefire.extensions.junit5.JUnit5Xml30StatelessReporter">
+						<usePhrasedTestCaseMethodName>true</usePhrasedTestCaseMethodName>
+					</statelessTestsetReporter>
 				</configuration>
 
 			</plugin>
@@ -75,6 +80,30 @@
 					</execution>
 				</executions>
 			</plugin>
+
+			<!-- jacoco support -->
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.6</version>
+				<executions>
+					<!-- prepare agent bound to mavens initial phase -->
+					<execution>
+						<id>jacoco-prepare</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>jacoco-report</id>
+						<phase>test</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
 		</plugins>
 	</build>
 

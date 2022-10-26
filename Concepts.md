@@ -46,6 +46,7 @@ It is very hard to achieve 100% coverage, mostly we would like 70-80%
 - After run press the `arrow exit box` icon to save and view as html
 - Tests can also be saved and view as html in the test result area, `arrow exit box`
 ## Maven
+All next items being created with `mvn test` command.
 - By default Maven **will not find Junit5 tests!**
     - Use Maven **Surefire** plugin for this
         ```
@@ -86,7 +87,7 @@ It is very hard to achieve 100% coverage, mostly we would like 70-80%
         <configuration>
             <statelessTestsetReporter implementation="org.apache.maven.plugin.surefire.extensions.junit5.JUnit5Xml30StatelessReporter">
                 <usePhrasedTestCaseMethodName>true</usePhrasedTestCaseMethodName>
-            </tatelessTestsetReporter>
+            </statelessTestsetReporter>
         </configuration>
         ```
 - To run code coverage in Maven we need to use JaCoCo that run during test phase

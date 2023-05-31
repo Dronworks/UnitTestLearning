@@ -115,3 +115,18 @@ All next items being created with `mvn test` command.
         </plugin>
         ```
 - Reports are saved in **target/sire/jacoco/index.html**
+
+## Conditional tests
+Sometimes we want tests to run only in some cases:
+- Method is broken and we wait for fix
+- Run only on specific java
+- Run only on specific OS
+- Run only if Environment set or system property. E.g., Run only on QA/DEV/TEST environment
+
+### Annotations - Class level OR Method level
+- `@Disabled` example: `@Disabled('dont run until ...')`
+- `@EnabledOnOs` example: `@EnableOnOs(OS.WINDOWS)` and `@EnableOnOs({OS.WINDOWS, OS.LINUX})`
+- `@EnableOnJre` example: `@EnableOnJre(JRE.JAVA_17)`
+- `@EnableForJreRange` example: `@EnableOnJreRange(min=JRE.JAVA_8,max=JRE.JAVA_11)`
+- `@EnableIfSystemProperty` example: `@EnableIfSystemProperty(named="Name", matches="value")`
+- `@EnableIfEnvironmentVariable` example: `@EnableIfEnvironmentVariable(named="Name", matches="value")`

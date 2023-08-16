@@ -137,3 +137,5 @@ Sometimes we want tests to run only in some cases:
 	- Write test that fails
 	- Write code that pass the test
  	- Refactor
+- In the test create non existing class and call non existing function. Let the IntelliJ create this for you.
+- Could be good practice to write expected behavior of a tested code in comments before start writing the tests, this way it will be easy to follow on progress.

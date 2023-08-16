@@ -56,3 +56,21 @@
 - **Description:** Assert if timeout not happens during time given. **Note:** test WILL NOT wait for actual duration BUT FAIL after the Duration requested.
 - **Example:** In the next example the function runs 2 seconds, so test shuold pass, if Duration was 1 second it would fail. 
     - `assertTimeoutPreemptively(Duration.ofSeconds(3), () -> demoUtils.checkTimeout());`
+    
+## Nice test code
+- `fail("message")` - this will just fail the test. Good for starting.
+
+## ParameterizedTest
+### Types
+- `@ValueSource` - Array of values: Strings, ints...
+- `@CsvSource` - Array of csv
+- `@CsvFileSource` - CSV values from file
+- `@EnumSource` - Enum constant values
+- `@MethodSource` - Custom method that return values
+### Display name per test
+To display names by value: `@ParameterizedTest(name="value={0}, expected={1}")`. This will do output similar to 
+```
+V Testing FizzBull                   (origin test name)
+    V value=1, expected=1            (test name per value 1)
+    V value=3, expected=Fizz          (test name per value 2)
+```

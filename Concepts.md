@@ -129,4 +129,5 @@ Sometimes we want tests to run only in some cases:
 - `@EnableOnJre` example: `@EnableOnJre(JRE.JAVA_17)`
 - `@EnableForJreRange` example: `@EnableOnJreRange(min=JRE.JAVA_8,max=JRE.JAVA_11)`
 - `@EnableIfSystemProperty` example: `@EnableIfSystemProperty(named="Name", matches="value")`
+	- **Note:** to test system property in app variables add `-D<System Property>=<System value>`
 - `@EnableIfEnvironmentVariable` example: `@EnableIfEnvironmentVariable(named="Name", matches="value")`

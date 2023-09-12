@@ -56,6 +56,16 @@
 - **Description:** Assert if timeout not happens during time given. **Note:** test WILL NOT wait for actual duration BUT FAIL after the Duration requested.
 - **Example:** In the next example the function runs 2 seconds, so test shuold pass, if Duration was 1 second it would fail. 
     - `assertTimeoutPreemptively(Duration.ofSeconds(3), () -> demoUtils.checkTimeout());`
+
+## AssertAll
+- **Description:** We can do multiple asserts in one block.
+- **Example:** 
+    
+  ```
+  assertAll("Testing all methods for true",
+      () -> assertEquals(323.2, studentGrades.calculate()),
+      () -> assertEquals(100, studentGrades.max()));
+  ```
     
 ## Nice test code
 - `fail("message")` - this will just fail the test. Good for starting.

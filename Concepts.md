@@ -139,3 +139,19 @@ Sometimes we want tests to run only in some cases:
  	- Refactor
 - In the test create non existing class and call non existing function. Let the IntelliJ create this for you.
 - Could be good practice to write expected behavior of a tested code in comments before start writing the tests, this way it will be easy to follow on progress.
+
+## SpringBoot and Tests
+- General:
+  - Usually with @SpringBootTest annotation 
+  - You can Autowire **ApplicationContext**
+    - Usage example: `CollegeStudent student = context.getBean("studentBeanName", CollegeStudent.class);`
+    - Where there is a bean 
+ 
+              @Bean(name="studentBeanName")
+              @Scope(value="prototype)
+              CollegeStudent getCollegeStudent() {
+                return new CollegeStudent();
+              }
+                              
+  - SpringBootTest will be automatically found if sits under same package as the tested class
+    - But what if the test in different package? Specify the springboot application class @SpringBootTest(**classes = MyApplication.class**)

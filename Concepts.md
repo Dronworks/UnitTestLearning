@@ -155,3 +155,14 @@ Sometimes we want tests to run only in some cases:
                               
   - SpringBootTest will be automatically found if sits under same package as the tested class
     - But what if the test in different package? Specify the springboot application class @SpringBootTest(**classes = MyApplication.class**)
+
+## Mock
+- In pure mockito
+    - **@Mock** to mock a class
+    - **@InjectMocks** to inject mocked and spy dependencies into a Service
+        ```
+        @InjectMockes
+        private MyService myService;
+        ```
+- `verify(service).callMethod(any())` is same as to write `verify(service, times(1)).callMethod(any())`
+- **@MockBean** is a SpringBoot extension. It adds (and replaces) a bean in ApplicationContext.

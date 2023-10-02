@@ -172,3 +172,16 @@ ReflectionTestUtils
 - Set private fields: `ReflectionTestUtils.setField(someInstance, "someFieldName", someValue);`
 - Get private fields: `ReflectionTestUtils.getField(someInstance, "someFieldName");`
 - Call private method: `ReflectionTestUtils.invokeMethod(someInstance, "someFunctionName");`
+
+## H2 Database
+If the dependence of H2 is in the dependencies. **Spring will AUTOMATICALLY** create and define a connection.
+
+## Testing DB
+When testing database:
+- Each test should start from a known state.
+- Before each test insert sample data.
+- After each test remove all data.
+- You can @Autowire **JdbcTemplate** and use it for executing jdbc operations. I.g.:
+    - `jdbc.execute("insert into student(id, firstname, lastname, email) values (1, 'Eric', 'Rubi', 'email@mail.com')");`
+    - `jdbc.execute("DELETE FROM student")`
+- For integration testing use `spring.jpa.hibernate.ddl-auto=create-drop` - this is commonly used and will drop created tables and schemas between tests.

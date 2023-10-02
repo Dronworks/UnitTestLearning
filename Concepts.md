@@ -185,3 +185,7 @@ When testing database:
     - `jdbc.execute("insert into student(id, firstname, lastname, email) values (1, 'Eric', 'Rubi', 'email@mail.com')");`
     - `jdbc.execute("DELETE FROM student")`
 - For integration testing use `spring.jpa.hibernate.ddl-auto=create-drop` - this is commonly used and will drop created tables and schemas between tests.
+- Use data sql files:
+    - Create in resources file: `insertData.sql`
+    - Fill it with insert commands. (each line an insert command) `insert into student(id, firstname, lastname, email) values (1, 'Eric', 'Rubi', 'email@mail.com')`
+    - Add `@Sql("/insertData.sql")` annotation before the test to get load the data. **NOTE:** it is executed AFTER @BeforeEach

@@ -154,7 +154,7 @@ Sometimes we want tests to run only in some cases:
               }
                               
   - SpringBootTest will be automatically found if sits under same package as the tested class
-    - But what if the test in different package? Specify the springboot application class @SpringBootTest(**classes = MyApplication.class**)
+    - But what if the test in different package? Specify the springboot application class @SpringBootTest(**classes = MyApplication.class**)  
 
 ## Mock
 - In pure mockito
@@ -166,3 +166,9 @@ Sometimes we want tests to run only in some cases:
         ```
 - `verify(service).callMethod(any())` is same as to write `verify(service, times(1)).callMethod(any())`
 - **@MockBean** is a SpringBoot extension. It adds (and replaces) a bean in ApplicationContext.
+
+## Accessing privates during test
+ReflectionTestUtils
+- Set private fields: `ReflectionTestUtils.setField(someInstance, "someFieldName", someValue);`
+- Get private fields: `ReflectionTestUtils.getField(someInstance, "someFieldName");`
+- Call private method: `ReflectionTestUtils.invokeMethod(someInstance, "someFunctionName");`

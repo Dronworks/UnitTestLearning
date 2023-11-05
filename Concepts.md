@@ -221,3 +221,4 @@ MvcResult result = mvc.perform(MockMvcRequestBuilders
                 .andExpect(status().isOk())
                 .andReturn();
 ```
+- If testing a controller GET, we can test **if a data is actually in the database using assert and sql** before testing the controller itself. This may remove confusion if the controller badly written. 

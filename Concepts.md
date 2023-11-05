@@ -226,3 +226,32 @@ MvcResult result = mvc.perform(MockMvcRequestBuilders
 assertTrue(studentDao.findById(1).isPresent());
 assertFalse(studentDao.findById(0).isPresent());
 ```
+- To test context type return you can add `andExpect(content().contentType(APPLICATION_JSON_UTF8))`
+- Use **JsonPath** to test response body. (comes from ***spring-boot-starter-test***).
+    - **$** access the root element
+    - **$.id** - acess the id field of the json
+    - **$.firstname** - access the firstname field
+    ```
+    {
+        "id": 10,
+        "firstname": "andrey"
+    }
+    ```
+    - To verify array size for example
+    ```
+    {
+        "id": 10,
+        "firstname": "andrey"
+    },
+    {
+        "id": 10,
+        "firstname": "andrey"
+    }
+    ```
+    we can use  `andExpect(jsonPath("$", hasSize(2)));`
+- To convert the response from Object to json we can use `.content(objectMapper.writeValueAsString(student))` and then use JsonPath to do some tests.
+- Another example is using **JsonPath** to test status code. `andExpect(jsonPath("$.status", is(404)))` **Note:** is is from **org.hamcrest.Matchers.is**.
+
+
+## JsonPath 
+It is a great way to test json

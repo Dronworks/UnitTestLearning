@@ -189,3 +189,29 @@ When testing database:
     - Create in resources file: `insertData.sql`
     - Fill it with insert commands. (each line an insert command) `insert into student(id, firstname, lastname, email) values (1, 'Eric', 'Rubi', 'email@mail.com')`
     - Add `@Sql("/insertData.sql")` annotation before the test to get load the data. **NOTE:** it is executed AFTER @BeforeEach
+
+## Testing a controller
+In order to test a controller we can use MockMVC.
+```
+MvcResult result = mvc.perform(MockMvcRequestBuilders
+                        .post("/intents")
+                        .content(MISSING_PHRASES_LIST)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().is4xxClientError())
+                .andDo(MockMvcResultHandlers.print())
+                .andReturn();
+```
+In addition if a controller returns a view we can test it like this 
+```
+ModelAndView mav = result.getModelAndView();
+
+ModelAndViewAssert.assertViewName(mav, "index");
+```
+Example of a **get** test
+```
+MvcResult result = mvc.perform(MockMvcRequestBuilders
+                        .get("/delete/student/{id}", 1))
+                .andExpect(status().isOk())
+                .andReturn();
+```

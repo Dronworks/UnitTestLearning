@@ -27,3 +27,9 @@ To choose what do we want to use, we may decide of next factors:
     Iterable equals
     org.opentest4j.AssertionFailedError: Arrays should be the same ==> iterable contents differ at index [1], expected: <2> but was: <3>
     ```
+
+## Iterable can be cast to collection
+```
+Iterable<SomeClass> iterable;
+asseryTrue((Collection<SomeClass>) iterable).size() == 2)
+```

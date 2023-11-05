@@ -190,6 +190,12 @@ When testing database:
     - Fill it with insert commands. (each line an insert command) `insert into student(id, firstname, lastname, email) values (1, 'Eric', 'Rubi', 'email@mail.com')`
     - Add `@Sql("/insertData.sql")` annotation before the test to get load the data. **NOTE:** it is executed AFTER @BeforeEach
 
+Another great approach is to have the SQL scripts inside a properties file.
+- Create in properties file the SQL script.
+`sql.scripts.create.student=insert into student (id, firstname, lastname, email_address) values (1, 'Eric', 'Roby', 'eric@gnail.com')`
+- Inject it using @Value
+- Run it using `jdbc.execute(scriptName)`
+
 ## Testing a controller
 In order to test a controller we can use MockMVC.
 ```

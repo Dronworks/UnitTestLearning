@@ -53,3 +53,21 @@ PUT /task/Existing (negative) -> 400(Bad Request), JSON of ERROR
 DELETE /task/Existing -> 200
 DELETE /task/NonExisting -> 202(Accepted)
 ```
+
+**Unit Tests:**
+1. if start == null -> throw exception
+2. if end == null -> throw exception
+3. if end == start -> throw exception
+4. if end < start -> throw exception
+5. if task.start == windows.start -> ok
+6. if task.end == window.end -> ok
+7. oldTask.start == newTask.start -> exception
+8. oldTask.end == newTask. start -> ok
+
+**Integration:**
+
+CRUD tests
+
+**E2E:**
+- Login -> Create Backup Window -> Create New Backup Task
+- Also one negative test

@@ -1,3 +1,4 @@
+## System
 **Context:**
   - Cloud backup system. Save data from users computer to the cloud.
   - To improve perfomance backup happens only in "Backup windows"
@@ -21,7 +22,7 @@ public class Scheduler {
   }
 }
 ```
-
+## Tests Pyramid
 **Acceptance Tests(Component level) :**
 ```
 Scenario: Create Backup task during Backup Window

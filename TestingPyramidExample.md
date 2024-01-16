@@ -1,19 +1,23 @@
 **Context:**
+  
   Cloud backup system. Save data from users computer to the cloud.
   To improve perfomance backup happens only in "Backup windows"
   configured by user(e.g. 00:00 - 06.00)
 
 **Requirements:**
+  
   As a user
   In order to backup storage
   I want to schedule backup task during Backup window
 
 **Tasks:**
+  
   Must be inside Backup windows
   Must not overlap
   Have some max length (e.g. 00.30 - 02.00)
 
 **Method:**
+
 public class Scheduler {
   public BackupTask schedule(DateTime start, DateTime end){
   //Implementation
